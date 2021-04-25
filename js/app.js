@@ -4,9 +4,10 @@ var getValueB = () => parseInt(document.getElementById("input-value2").value);
 
 // Función para comprobar si los operandos contienen algún valor
 var checkOperand = (value) => {
-        if (isNaN(value)) return true;
-    }
-    // Función que devuelve mensaje de error
+    if (isNaN(value)) return true;
+}
+
+// Función que devuelve mensaje de error
 var errorMessage = () => "Error!! All operands must be completed.";
 
 // Funciones de las distintas operaciones
