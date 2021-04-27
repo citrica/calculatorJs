@@ -1,48 +1,48 @@
 // Funciones para obtener los valores de los operandos
-var getValueA = () => parseInt(document.getElementById("input-value1").value);
-var getValueB = () => parseInt(document.getElementById("input-value2").value);
+var valueA = () => parseInt(document.getElementById("input-value1").value);
+var valueB = () => parseInt(document.getElementById("input-value2").value);
 
-// Función para comprobar si los operandos contienen algún valor
-var checkOperand = (value) => {
-    if (isNaN(value)) return true;
+// Función para comprobar si los operandos contienen valor vacío
+var emptyValue = (valueA, valueB) => {
+    if (isNaN(valueA) || isNaN(valueB)) return true;
 }
 
 // Función que devuelve mensaje de error
 var errorMessage = () => "Error!! All operands must be completed.";
 
-// Funciones de las distintas operaciones
-var sum = () => getValueA() + getValueB();
-var subtract = () => getValueA() - getValueB();
-var multiplication = () => getValueA() * getValueB();
-var division = () => getValueA() / getValueB();
+// Funciones de las distintas operaciones con dos operandos de entrada
+var sum = (valueA, valueB) => valueA + valueB;
+var subtract = (valueA, valueB) => valueA - valueB;
+var multiplication = (valueA, valueB) => valueA * valueB;
+var division = (valueA, valueB) => valueA / valueB;
 
-// Funciones de comprobación de operaciones
+// Funciones con condicional
 var checkSum = () => {
-    if (!checkOperand(getValueA()) && !checkOperand(getValueB())) {
-        return sum();
-    } else {
+    if (emptyValue(valueA(), valueB())) {
         return errorMessage();
+    } else {
+        return sum(valueA(), valueB());
     }
 }
 var checkSubtract = () => {
-    if (!checkOperand(getValueA()) && !checkOperand(getValueB())) {
-        return subtract();
-    } else {
+    if (emptyValue(valueA(), valueB())) {
         return errorMessage();
+    } else {
+        return subtract(valueA(), valueB());
     }
 }
 var checkMultiplication = () => {
-    if (!checkOperand(getValueA()) && !checkOperand(getValueB())) {
-        return multiplication();
-    } else {
+    if (emptyValue(valueA(), valueB())) {
         return errorMessage();
+    } else {
+        return multiplication(valueA(), valueB());
     }
 }
 var checkDivision = () => {
-    if (!checkOperand(getValueA()) && !checkOperand(getValueB())) {
-        return division();
-    } else {
+    if (emptyValue(valueA(), valueB())) {
         return errorMessage();
+    } else {
+        return division(valueA(), valueB());
     }
 }
 
@@ -52,7 +52,7 @@ var resultSubtract = () => document.getElementById("result").innerText = checkSu
 var resultMultiplication = () => document.getElementById("result").innerText = checkMultiplication();
 var resultDivision = () => document.getElementById("result").innerText = checkDivision();
 
-// Llamada a la ejecución de la operación correspondiente (eventos)
+// Eventos
 document.getElementById("button-sum").addEventListener("click", resultSum);
 document.getElementById("button-subtract").addEventListener("click", resultSubtract);
 document.getElementById("button-multiplication").addEventListener("click", resultMultiplication);
